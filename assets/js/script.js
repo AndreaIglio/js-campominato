@@ -1,3 +1,40 @@
+
+
+
+// BONUS: (da fare solo se funziona tutto il resto)
+// all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
+// con difficoltà 0 => tra 1 e 100
+// con difficoltà 1 =>  tra 1 e 80
+// con difficoltà 2 => tra 1 e 50
+
+
+var rndNumberMaxValue;
+var userOpportunities;
+
+do {
+  var difficoulty = Number(prompt("Choose a difficoulty between da 0 a 2"));
+} while (difficoulty > 2 || difficoulty < 0);
+
+switch (difficoulty) {
+
+    case 0:
+        minValue = 1;
+        maxValue = 100;
+        userOpportunities = "Inserisci un numero da 1 a 100";
+        break;
+    case 1:
+        minValue = 1;
+        maxValue = 80;
+        userOpportunities = "Inserisci un numero da 1 a 80"
+        break;
+    case 2:
+        minValue = 1;
+        maxValue = 50;
+        userOpportunities = "Inserisci un numero da 1 a 50"
+        break;
+}
+
+
 //TASK 1 Il computer deve generare 16 numeri casuali tra 1 e 100.
 // I numeri non possono essere duplicati
 
@@ -12,9 +49,7 @@ function getRndInteger(min, max) {
 
 
 
-
-
-var genNumber = getRndInteger(1, 100);
+var genNumber = getRndInteger(minValue, maxValue);
 var pcNumberList = [];
 var i = 0;
 
@@ -29,7 +64,7 @@ function notDuplicate(array, n1, n2){
 while (array.length < n2) {
     var i = 0;
         
-        var n1 = getRndInteger(1, 100);
+        var n1 = getRndInteger(minValue, maxValue);
         console.log(n1);
 
         if (array.indexOf(n1) == -1) {
@@ -49,10 +84,10 @@ var bombs = notDuplicate(pcNumberList, genNumber, 16);
 // TASK 4 Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
 //TASK 5 La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
 var userNumberList = [];
-var userNumberListLength = 100 - pcNumberList.length;
+var userNumberPossibilities = 100 - pcNumberList.length;
 
-while (userNumberList.length < userNumberListLength) {
-  var userNumber = Number(prompt("Inserisci un numero compreso tra 1 e 100"));
+while (userNumberList.length < userNumberPossibilities) {
+  var userNumber = Number(prompt(userOpportunities));
   var checkResult = false;
 
   if (userNumberList.indexOf(userNumber) == -1) {
@@ -73,21 +108,17 @@ console.log(userNumberList);
 
 //TASK 6 La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
 
-if (userNumberList.length == userNumberListLength) {
+if (userNumberList.length == userNumberPossibilities) {
   console.log("You win");
+    console.log("You scored " + (userNumberList.length));
 }
-
+else {
+  console.log("You scored " + (userNumberList.length - 1));}
 
 //TASK 7 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 
 
-    console.log('You scored ' + (userNumberList.length - 1));
+  
 
 
 
-
-// BONUS: (da fare solo se funziona tutto il resto)
-// all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
-// con difficoltà 0 => tra 1 e 100
-// con difficoltà 1 =>  tra 1 e 80
-// con difficoltà 2 => tra 1 e 50
