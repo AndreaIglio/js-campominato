@@ -11,11 +11,13 @@
 var rndNumberMaxValue;
 var userOpportunities;
 
-do {
-  var difficoulty = Number(prompt("Choose a difficoulty between da 0 a 2"));
-} while (difficoulty > 2 || difficoulty < 0);
 
-switch (difficoulty) {
+
+do {
+  var difficulty = Number(prompt("Choose a difficulty between da 0 a 2"));
+} while (difficulty > 2 || difficulty < 0);
+
+switch (difficulty) {
 
     case 0:
         minValue = 1;
@@ -48,10 +50,8 @@ function getRndInteger(min, max) {
 }
 
 
-
-var genNumber = getRndInteger(minValue, maxValue);
-var pcNumberList = [];
-var i = 0;
+pcNumberList = [];
+var genNumber;
 
 /** The function will generate n2 different numbers and push them into an array
  * 
@@ -85,7 +85,7 @@ var bombs = notDuplicate(pcNumberList, genNumber, 16);
 //TASK 5 La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
 var userNumberList = [];
 var userNumberPossibilities = 100 - pcNumberList.length;
-
+var i = 0;
 while (userNumberList.length < userNumberPossibilities) {
   var userNumber = Number(prompt(userOpportunities));
   var checkResult = false;
@@ -107,6 +107,7 @@ while (userNumberList.length < userNumberPossibilities) {
 console.log(userNumberList);
 
 //TASK 6 La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
+//TASK 7 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 
 if (userNumberList.length == userNumberPossibilities) {
   console.log("You win");
@@ -115,7 +116,7 @@ if (userNumberList.length == userNumberPossibilities) {
 else {
   console.log("You scored " + (userNumberList.length - 1));}
 
-//TASK 7 Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
+
 
 
   
