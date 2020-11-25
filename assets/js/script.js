@@ -1,3 +1,57 @@
+//VAR
+
+
+var rndNumberMaxValue;
+var userOpportunities;
+var minValue;
+var maxValue;
+var genNumber;
+
+
+//VAR ARRAY
+
+var userNumberList = [];
+var pcNumberList = [];
+
+
+// FUNCTIONS
+
+/** The function will generate a random number between 1 and 100
+ * 
+ * @param {*} min  min value
+ * @param {*} max  max value
+ */
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) + 1);
+}
+
+
+
+/** The function will generate n2 different numbers and push them into an array
+ * 
+ * @param {*} array array of bombs (including all the n1 numbers)
+ * @param {*} n1    random numbers between 1 and 100 following getRndInteger function (pcNumbers) that will be pushed to the array
+ * @param {*} n2    length of the array
+ */
+function notDuplicate(array, n1, n2){
+
+while (array.length < n2) {
+    var i = 0;
+        
+        var n1 = getRndInteger(minValue, maxValue);
+        console.log(n1);
+
+        if (array.indexOf(n1) == -1) {
+        array.push(n1);
+         }
+    i++;
+    }
+    console.log(array);
+    return true;
+}
+
+
+
 
 
 
@@ -8,13 +62,9 @@
 // con difficoltà 2 => tra 1 e 50
 
 
-var rndNumberMaxValue;
-var userOpportunities;
-
-
 
 do {
-  var difficulty = Number(prompt("Choose a difficulty between da 0 a 2"));
+  var difficulty = Number(prompt('Choose a difficulty between da 0 a 2', '0,1,2'));
 } while (difficulty > 2 || difficulty < 0);
 
 switch (difficulty) {
@@ -40,41 +90,9 @@ switch (difficulty) {
 //TASK 1 Il computer deve generare 16 numeri casuali tra 1 e 100.
 // I numeri non possono essere duplicati
 
-/** Generate a random number between 1 and 100
- * 
- * @param {*} min  min value
- * @param {*} max  max value
- */
-function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min) + 1);
-}
+// riferimento funzione riga 24
 
-
-pcNumberList = [];
-var genNumber;
-
-/** The function will generate n2 different numbers and push them into an array
- * 
- * @param {*} array array of bombs (including all the n1 numbers)
- * @param {*} n1    random numbers between 1 and 100 following getRndInteger function (pcNumbers) that will be pushed to the array
- * @param {*} n2    length of the array
- */
-function notDuplicate(array, n1, n2){
-
-while (array.length < n2) {
-    var i = 0;
-        
-        var n1 = getRndInteger(minValue, maxValue);
-        console.log(n1);
-
-        if (array.indexOf(n1) == -1) {
-        array.push(n1);
-         }
-    i++;
-    }
-    console.log(array);
-    return true;
-}
+// riferimento function riga 36
 
 var bombs = notDuplicate(pcNumberList, genNumber, 16);
 
@@ -83,9 +101,11 @@ var bombs = notDuplicate(pcNumberList, genNumber, 16);
 // TASK 3 L’utente non può inserire più volte lo stesso numero.
 // TASK 4 Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
 //TASK 5 La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
-var userNumberList = [];
+
 var userNumberPossibilities = 100 - pcNumberList.length;
+
 var i = 0;
+
 while (userNumberList.length < userNumberPossibilities) {
   var userNumber = Number(prompt(userOpportunities));
   var checkResult = false;
